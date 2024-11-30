@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.paktai.R
+import com.example.paktai.adapter.RecommendAddapter
 import com.example.paktai.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -64,5 +67,10 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(),itemMessage,Toast.LENGTH_SHORT).show()
 }
         })
+        val countryName = listOf("ระนอง","กระบี่","สุราษฎร์ธานี","พังงา","สตูล")
+        val recommendcountryImages = listOf(R.drawable.ranong,R.drawable.krabi,R.drawable.surat_thani,R.drawable.phang_nga,R.drawable.satun)
+        val adapter = RecommendAddapter(countryName,recommendcountryImages)
+        binding.RecommendRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.RecommendRecyclerView.adapter = adapter
     }
 }
