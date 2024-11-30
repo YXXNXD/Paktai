@@ -10,11 +10,10 @@
     <item android:title="Search"
         android:id="@+id/searchFragment"
         android:icon="@drawable/search_svgrepo_com"/>
-    <item android:id="@+id/historyFragment"
-        android:title="History"
-        android:icon="@drawable/history_svgrepo_com"/>
-    <item
-        android:id="@+id/profileFragment"
+    <item android:id="@+id/ChatFragment"
+        android:title="Chat"
+        android:icon="@drawable/chat_round_line_svgrepo_com"/>
+    <item android:id="@+id/profileFragment"
         android:icon="@drawable/account_icon"
         android:title="Profile" />
 </menu>

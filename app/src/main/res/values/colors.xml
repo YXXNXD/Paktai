@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_green">#88AB8E</color>
     <color name="bg_font">#EEE7DA</color>
+    <color name="bg_search">#F7F7F9</color>
 </resources>

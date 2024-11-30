@@ -26,8 +26,8 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.example.paktai.Fragment.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/ChatFragment"
+        android:name="com.example.paktai.Fragment.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
+import com.example.paktai.MenuBottomSheetFragment
 import com.example.paktai.R
 import com.example.paktai.adapter.RecommendAddapter
 import com.example.paktai.databinding.FragmentHomeBinding
@@ -29,6 +30,11 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater,container,false)
+
+        binding.viewAllMenu.setOnClickListener{
+            val bottomSheetDialog = MenuBottomSheetFragment()
+            bottomSheetDialog.show(parentFragmentManager,"Test")
+        }
         return binding.root
 
     }
