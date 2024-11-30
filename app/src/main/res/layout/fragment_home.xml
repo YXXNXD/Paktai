@@ -15,6 +15,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="5dp"
         app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -75,8 +76,10 @@
         android:layout_marginEnd="-70dp"
         android:background="@drawable/textviewshape"
         android:elevation="5dp"
+        android:fontFamily="@font/bai_jamjuree_semibold"
         android:gravity="center"
         android:text="view more"
+        android:textColor="#EEE7DA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toTopOf="@+id/textView11" />

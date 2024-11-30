@@ -8,7 +8,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="340dp"
         android:layout_height="150dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="22dp"
         app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,6 +52,7 @@
                 android:background="@drawable/comfirmshape"
                 android:gravity="center"
                 android:text="Confirm"
+                android:textColor="#EEE7DA"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
