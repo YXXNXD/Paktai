@@ -12,38 +12,38 @@ import com.example.paktai.adapter.MenuAdapter
 import com.example.paktai.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
-    private  lateinit var binding: FragmentSearchBinding
-    private lateinit var adapter: MenuAdapter
-    private val originalmenuCountryName = listOf("วัดวารีบรรพต","ทุ่งโปรงทอง","เกาะเสม็ด","เกาะทะลุ","น้ำตกหงาว","เกาะพยาม","น้ำตกปุญญบาล","บ่อน้ำร้อนรักษะวาริน")
-    private val originalmenuImage = listOf(
-        R.drawable.ranong,
-        R.drawable.krabi,
-        R.drawable.surat_thani,
-        R.drawable.phang_nga,
-        R.drawable.satun,
-        R.drawable.chumphon,
-        R.drawable.trang,
-        R.drawable.nakhon_si_thammarat,
-        R.drawable.pattani,
-        R.drawable.phatthalung,
-        R.drawable.phuket,
-        R.drawable.yala,
-        R.drawable.songkhla,
-        R.drawable.narathiwat
-    )
+    private lateinit var binding: FragmentSearchBinding
+    private lateinit var adapter : MenuAdapter
+    private val originalMenuCountry = listOf("ระนอง","ระนอง","ระนอง","ระนอง","ระนอง","ระนอง","ระนอง","ระนอง",)
+    private val originalMenuCountryName = listOf("วัดวารีบรรพต","ทุ่งโปรงทอง","เกาะเสม็ด","เกาะทะลุ","น้ำตกหงาว","เกาะพยาม","น้ำตกปุญญบาล","บ่อน้ำร้อนรักษะวาริน")
+    private val originalMenuGuideName = listOf("สมชาย อินทราพร","สุดา วัฒนานนท์","ภูมิ ศรีสวัสดิ์","อมรรัตน์ รัตนากร","นาวา ชัยภักดี","จิราภรณ์ มณีรัตน","ธนพล จันทร์ศรี","ลัดดา สุวรรณา")
+    private val originalMenuItemPrice = listOf("10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท")
+    private val originalMenuImage = listOf(
+        R.drawable.menu1,
+        R.drawable.menu2,
+        R.drawable.menu3,
+        R.drawable.menu4,
+        R.drawable.menu5,
+        R.drawable.menu6,
+        R.drawable.menu7,
+        R.drawable.menu8)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
+
+    private val filterMenuCountry = mutableListOf<String>()
     private val filterMenuCountryName = mutableListOf<String>()
-    private val filterMenuCountryImage = mutableListOf<Int>()
+    private val filterMenuGuideName = mutableListOf<String>()
+    private val filterMenuItemPrice = mutableListOf<String>()
+    private val filterMenuImage = mutableListOf<Int>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater,container,false)
-        adapter = MenuAdapter(filterMenuCountryName,filterMenuCountryImage)
+        adapter = MenuAdapter(filterMenuCountry,filterMenuCountryName,filterMenuGuideName,filterMenuItemPrice,filterMenuImage)
         binding.SearchMenuRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.SearchMenuRecyclerView.adapter = adapter
 
@@ -53,11 +53,17 @@ class SearchFragment : Fragment() {
     }
 
     private fun showAllMenu() {
-        filterMenuCountryName.clear()
-        filterMenuCountryImage.clear()
+        filterMenuCountry.clear()
+        filterMenuGuideName.clear()
+        filterMenuGuideName.clear()
+        filterMenuItemPrice.clear()
+        filterMenuImage.clear()
 
-        filterMenuCountryName.addAll(originalmenuCountryName)
-        filterMenuCountryImage.addAll(originalmenuImage)
+        filterMenuCountry.addAll(originalMenuCountry)
+        filterMenuCountryName.addAll(originalMenuCountryName)
+        filterMenuGuideName.addAll(originalMenuGuideName)
+        filterMenuItemPrice.addAll(originalMenuItemPrice)
+        filterMenuImage.addAll(originalMenuImage)
 
         adapter.notifyDataSetChanged()
     }
@@ -70,22 +76,27 @@ class SearchFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                filterMenuCountryName(newText)
+                filterMenuItems(newText)
                 return true
             }
-
-            private fun filterMenuCountryName(newText: String) {
-                TODO("Not yet implemented")
-            }
         })
+        TODO("Not yet implemented")
     }
 
-    private fun filterMenuItems(query: String?) {
+    private fun filterMenuItems(query: String) {
+        filterMenuCountry.clear()
+        filterMenuGuideName.clear()
+        filterMenuGuideName.clear()
+        filterMenuItemPrice.clear()
+        filterMenuImage.clear()
 
-        originalmenuImage.forEachIndexed{index, countryName ->
-            if(countryName.contains(query,ignoreCase = true)){
-                filterMenuCountryName.add(originalmenuCountryName[index])
-                filterMenuCountryImage.add(originalmenuImage[index])
+        originalMenuCountry.forEachIndexed { index, countryName ->
+            if (countryName.contains(query,ignoreCase = true)){
+                filterMenuCountry.add(originalMenuCountry[index])
+                filterMenuCountryName.add(countryName)
+                filterMenuGuideName.add(originalMenuGuideName[index])
+                filterMenuItemPrice.add(originalMenuItemPrice[index])
+                filterMenuImage.add(originalMenuImage[index])
             }
         }
         adapter.notifyDataSetChanged()
@@ -97,8 +108,5 @@ class SearchFragment : Fragment() {
 }
 
 private fun android.widget.SearchView.setOnQueryTextListener(onQueryTextListener: SearchView.OnQueryTextListener) {
-}
-
-private fun Int.contains(query: String?, ignoreCase: Boolean): Boolean {
     TODO("Not yet implemented")
 }

@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="340dp"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -25,8 +26,8 @@
 
             <ImageView
                 android:id="@+id/menuImage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/circle_shape"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -35,29 +36,74 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/menuCountryName"
+                android:id="@+id/searchCountryName2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/bai_jamjuree_semibold"
                 android:text="Country Name"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/menuImage"
+                app:layout_constraintTop_toBottomOf="@+id/searchCountryName" />
+
+            <TextView
+                android:id="@+id/searchGuideName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bai_jamjuree_semibold"
+                android:text="Guide Name"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
+                app:layout_constraintTop_toBottomOf="@+id/searchCountryName2"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/searchCountryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/bai_jamjuree_semibold"
+                android:text="Country"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/menuImage"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/plus_shape"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/plus_large_svgrepo_com" />
+
+            <TextView
+                android:id="@+id/searchPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Price"
+                app:layout_constraintBottom_toTopOf="@+id/imageButton"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/menuConfirmRecommend"
-                android:layout_width="60dp"
-                android:layout_height="20dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/comfirmshape"
-                android:gravity="center"
-                android:text="Confirm"
-                android:textColor="#EEE7DA"
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="ชื่อไกด์นำเที่ยว : "
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/menuImage"
+                app:layout_constraintTop_toBottomOf="@+id/searchCountryName2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

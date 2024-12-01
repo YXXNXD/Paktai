@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.paktai.adapter.MenuAdapter
+import com.example.paktai.adapter.SimpleMenuAdapter
 import com.example.paktai.databinding.FragmentMenuBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -43,10 +43,9 @@ class MenuBottomSheetFragment : BottomSheetDialogFragment(){
             R.drawable.songkhla,
             R.drawable.narathiwat
         )
-        val adapter = MenuAdapter(
+        val adapter = SimpleMenuAdapter(
             ArrayList(menuCountryName),
-            ArrayList(menuImage)
-        )
+            ArrayList(menuImage))
         binding.menuRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.menuRecyclerView.adapter = adapter
         return binding.root
