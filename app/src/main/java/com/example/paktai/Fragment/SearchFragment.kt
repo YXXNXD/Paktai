@@ -1,18 +1,18 @@
 package com.example.paktai.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.paktai.R
 import com.example.paktai.adapter.MenuAdapter
 import com.example.paktai.databinding.FragmentSearchBinding
-import com.example.paktai.databinding.SearchMenuItemBinding
 
 class SearchFragment : Fragment() {
+
     private lateinit var binding: FragmentSearchBinding
     private lateinit var adapter: MenuAdapter
 
