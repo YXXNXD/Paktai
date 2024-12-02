@@ -10,14 +10,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.paktai.R
 import com.example.paktai.adapter.MenuAdapter
 import com.example.paktai.databinding.FragmentSearchBinding
+import com.example.paktai.databinding.SearchMenuItemBinding
 
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var adapter : MenuAdapter
-    private val originalMenuCountry = listOf("ระนอง","ระนอง","ระนอง","ระนอง","ระนอง","ระนอง","ระนอง","ระนอง",)
-    private val originalMenuCountryName = listOf("วัดวารีบรรพต","ทุ่งโปรงทอง","เกาะเสม็ด","เกาะทะลุ","น้ำตกหงาว","เกาะพยาม","น้ำตกปุญญบาล","บ่อน้ำร้อนรักษะวาริน")
-    private val originalMenuGuideName = listOf("สมชาย อินทราพร","สุดา วัฒนานนท์","ภูมิ ศรีสวัสดิ์","อมรรัตน์ รัตนากร","นาวา ชัยภักดี","จิราภรณ์ มณีรัตน","ธนพล จันทร์ศรี","ลัดดา สุวรรณา")
-    private val originalMenuItemPrice = listOf("10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท","10,000 บาท")
+    private lateinit var adapter: MenuAdapter
+
+    private val originalMenuCountry = listOf("ระนอง", "ระนอง", "ระนอง", "ระนอง", "ระนอง", "ระนอง", "ระนอง", "ระนอง")
+    private val originalMenuCountryName = listOf("วัดวารีบรรพต", "ทุ่งโปรงทอง", "เกาะเสม็ด", "เกาะทะลุ", "น้ำตกหงาว", "เกาะพยาม", "น้ำตกปุญญบาล", "บ่อน้ำร้อนรักษะวาริน")
+    private val originalMenuGuideName = listOf("สมชาย อินทราพร", "สุดา วัฒนานนท์", "ภูมิ ศรีสวัสดิ์", "อมรรัตน์ รัตนากร", "นาวา ชัยภักดี", "จิราภรณ์ มณีรัตน", "ธนพล จันทร์ศรี", "ลัดดา สุวรรณา")
+    private val originalMenuItemPrice = listOf("10,000 บาท", "10,000 บาท", "10,000 บาท", "10,000 บาท", "10,000 บาท", "10,000 บาท", "10,000 บาท", "10,000 บาท")
     private val originalMenuImage = listOf(
         R.drawable.menu1,
         R.drawable.menu2,
@@ -26,11 +28,8 @@ class SearchFragment : Fragment() {
         R.drawable.menu5,
         R.drawable.menu6,
         R.drawable.menu7,
-        R.drawable.menu8)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+        R.drawable.menu8
+    )
 
     private val filterMenuCountry = mutableListOf<String>()
     private val filterMenuCountryName = mutableListOf<String>()
@@ -42,19 +41,20 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentSearchBinding.inflate(inflater,container,false)
-        adapter = MenuAdapter(filterMenuCountry,filterMenuCountryName,filterMenuGuideName,filterMenuItemPrice,filterMenuImage)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        adapter = MenuAdapter(filterMenuCountry, filterMenuCountryName, filterMenuGuideName, filterMenuItemPrice, filterMenuImage)
+
         binding.SearchMenuRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.SearchMenuRecyclerView.adapter = adapter
 
-        setupSearchView()
+        //setupSearchView()
         showAllMenu()
         return binding.root
     }
 
     private fun showAllMenu() {
         filterMenuCountry.clear()
-        filterMenuGuideName.clear()
+        filterMenuCountryName.clear()
         filterMenuGuideName.clear()
         filterMenuItemPrice.clear()
         filterMenuImage.clear()
@@ -68,32 +68,31 @@ class SearchFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-    private fun setupSearchView() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String): Boolean {
-                filterMenuItems(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                filterMenuItems(newText)
-                return true
-            }
-        })
-        TODO("Not yet implemented")
-    }
+//    private fun setupSearchView() {
+//        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                filterMenuItems(query)
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                filterMenuItems(newText)
+//                return true
+//            }
+//        })
+//    }
 
     private fun filterMenuItems(query: String) {
         filterMenuCountry.clear()
-        filterMenuGuideName.clear()
+        filterMenuCountryName.clear()
         filterMenuGuideName.clear()
         filterMenuItemPrice.clear()
         filterMenuImage.clear()
 
         originalMenuCountry.forEachIndexed { index, countryName ->
-            if (countryName.contains(query,ignoreCase = true)){
+            if (countryName.contains(query, ignoreCase = true)) {
                 filterMenuCountry.add(originalMenuCountry[index])
-                filterMenuCountryName.add(countryName)
+                filterMenuCountryName.add(originalMenuCountryName[index])
                 filterMenuGuideName.add(originalMenuGuideName[index])
                 filterMenuItemPrice.add(originalMenuItemPrice[index])
                 filterMenuImage.add(originalMenuImage[index])
@@ -101,12 +100,4 @@ class SearchFragment : Fragment() {
         }
         adapter.notifyDataSetChanged()
     }
-
-    companion object {
-
-    }
-}
-
-private fun android.widget.SearchView.setOnQueryTextListener(onQueryTextListener: SearchView.OnQueryTextListener) {
-    TODO("Not yet implemented")
 }

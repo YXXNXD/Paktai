@@ -2,9 +2,8 @@ package com.example.paktai.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.paktai.databinding.SearchMenuItemBinding
+import com.example.paktai.databinding.MenuItemBinding
 
 class SimpleMenuAdapter(
     private val menuItemsName: MutableList<String>,
@@ -12,7 +11,7 @@ class SimpleMenuAdapter(
 ) : RecyclerView.Adapter<SimpleMenuAdapter.MenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
-        val binding = SearchMenuItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = MenuItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MenuViewHolder(binding)
     }
 
@@ -22,17 +21,13 @@ class SimpleMenuAdapter(
 
     override fun getItemCount(): Int = menuItemsName.size
 
-    inner class MenuViewHolder(private val binding: SearchMenuItemBinding) :
+    inner class MenuViewHolder(private val binding: MenuItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             binding.apply {
-                searchCountryName.text = menuItemsName[position]
-                menuImage.setImageResource(menuImage[position])
+                CountryNameRecommend.text = menuItemsName[position]
+                menuImageRecommend.setImageResource(menuImage[position])
             }
         }
     }
-}
-
-private operator fun ImageView.get(position: Int): Int {
-    return 0
 }

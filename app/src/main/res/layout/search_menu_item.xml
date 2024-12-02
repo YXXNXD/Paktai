@@ -14,10 +14,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="22dp"
-        app:cardElevation="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">>
+        app:cardElevation="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -25,9 +22,9 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/menuImage"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:id="@+id/SearchmenuImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/circle_shape"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -36,41 +33,38 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/searchCountryName2"
+                android:id="@+id/SearchCountryname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="13dp"
                 android:fontFamily="@font/bai_jamjuree_semibold"
                 android:text="Country Name"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/menuImage"
-                app:layout_constraintTop_toBottomOf="@+id/searchCountryName" />
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/textView12"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/searchGuideName"
+                android:id="@+id/SearchGuideName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bai_jamjuree_semibold"
                 android:text="Guide Name"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView13"
-                app:layout_constraintTop_toBottomOf="@+id/searchCountryName2"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintTop_toBottomOf="@+id/SearchCountry" />
 
             <TextView
-                android:id="@+id/searchCountryName"
+                android:id="@+id/SearchCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="24dp"
                 android:fontFamily="@font/bai_jamjuree_semibold"
                 android:text="Country"
                 android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/menuImage"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView15"
+                app:layout_constraintTop_toBottomOf="@+id/SearchCountryname" />
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -97,12 +91,42 @@
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="18dp"
                 android:text="ชื่อไกด์นำเที่ยว : "
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/menuImage"
-                app:layout_constraintTop_toBottomOf="@+id/searchCountryName2" />
+                app:layout_constraintStart_toEndOf="@+id/SearchmenuImage"
+                app:layout_constraintTop_toBottomOf="@+id/SearchCountry" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="13dp"
+                android:text="จังหวัด : "
+                app:layout_constraintStart_toEndOf="@+id/SearchmenuImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ราคา : "
+                app:layout_constraintBottom_toTopOf="@+id/imageButton"
+                app:layout_constraintEnd_toStartOf="@+id/searchPrice"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="24dp"
+                android:text="สถานที่ : "
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/SearchmenuImage"
+                app:layout_constraintTop_toBottomOf="@+id/SearchCountryname" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
