@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomSpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:dropDownHeight">200dp</item> <!-- ปรับค่าความสูงตามต้องการ -->
+        <item name="android:popupBackground">#FFFFFF</item> <!-- ตั้งค่าสีพื้นหลัง -->
+    </style>
+</resources>

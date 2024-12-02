@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,8 +50,35 @@ class SearchFragment : Fragment() {
         binding.SearchMenuRecyclerView.adapter = adapter
 
         setupSearchView()
+        setupSpinner()
         showAllMenu()
         return binding.root
+    }
+
+    private fun setupSpinner() {
+        val provinces = listOf(
+            "--จังหวัด--", "ระนอง", "กระบี่", "สุราษฎร์ธานี", "พังงา", "สตูล",
+            "ชุมพร", "ตรัง", "นครศรีธรรมราช", "ปัตตานี", "พัทลุง",
+            "ภูเก็ต", "ยะลา", "สงขลา", "นราธิวาส"
+        )
+
+        val spinnerAdapter = ArrayAdapter(requireContext(), R.layout.spinner_dropdown_item, provinces)
+
+        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item) // ใช้ layout ที่กำหนดเองสำหรับ dropdown
+        binding.categoryFilter.adapter = spinnerAdapter
+
+        binding.categoryFilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedProvince = parent?.getItemAtPosition(position).toString()
+                if (selectedProvince == "--จังหวัด--") {
+                    showAllMenu()
+                } else {
+                    filterMenuByProvince(selectedProvince)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
     }
 
     private fun showAllMenu() {
@@ -81,6 +110,25 @@ class SearchFragment : Fragment() {
             }
         })
     }
+    private fun filterMenuByProvince(selectedProvince: String) {
+        filterMenuCountry.clear()
+        filterMenuCountryName.clear()
+        filterMenuGuideName.clear()
+        filterMenuItemPrice.clear()
+        filterMenuImage.clear()
+
+        // กรองข้อมูลตามจังหวัดที่เลือก
+        originalMenuCountry.forEachIndexed { index, country ->
+            if (country == selectedProvince) {
+                filterMenuCountry.add(originalMenuCountry[index])
+                filterMenuCountryName.add(originalMenuCountryName[index])
+                filterMenuGuideName.add(originalMenuGuideName[index])
+                filterMenuItemPrice.add(originalMenuItemPrice[index])
+                filterMenuImage.add(originalMenuImage[index])
+            }
+        }
+        adapter.notifyDataSetChanged()
+    }
 
     private fun filterMenuItems(query: String) {
         filterMenuCountry.clear()
@@ -89,8 +137,8 @@ class SearchFragment : Fragment() {
         filterMenuItemPrice.clear()
         filterMenuImage.clear()
 
-        originalMenuCountryName.forEachIndexed { index, countryName ->
-            if (countryName.contains(query, ignoreCase = true)) {
+        originalMenuCountryName.forEachIndexed { index, country ->
+            if (country.contains(query, ignoreCase = true)) {
                 filterMenuCountry.add(originalMenuCountry[index])
                 filterMenuCountryName.add(originalMenuCountryName[index])
                 filterMenuGuideName.add(originalMenuGuideName[index])
