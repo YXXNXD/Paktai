@@ -47,7 +47,7 @@ class SearchFragment : Fragment() {
         binding.SearchMenuRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.SearchMenuRecyclerView.adapter = adapter
 
-        //setupSearchView()
+        setupSearchView()
         showAllMenu()
         return binding.root
     }
@@ -68,19 +68,19 @@ class SearchFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-//    private fun setupSearchView() {
-//        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String): Boolean {
-//                filterMenuItems(query)
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String): Boolean {
-//                filterMenuItems(newText)
-//                return true
-//            }
-//        })
-//    }
+    private fun setupSearchView() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                filterMenuItems(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                filterMenuItems(newText)
+                return true
+            }
+        })
+    }
 
     private fun filterMenuItems(query: String) {
         filterMenuCountry.clear()
