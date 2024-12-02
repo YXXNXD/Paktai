@@ -89,7 +89,7 @@ class SearchFragment : Fragment() {
         filterMenuItemPrice.clear()
         filterMenuImage.clear()
 
-        originalMenuCountry.forEachIndexed { index, countryName ->
+        originalMenuCountryName.forEachIndexed { index, countryName ->
             if (countryName.contains(query, ignoreCase = true)) {
                 filterMenuCountry.add(originalMenuCountry[index])
                 filterMenuCountryName.add(originalMenuCountryName[index])
