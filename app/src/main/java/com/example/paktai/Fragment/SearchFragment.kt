@@ -63,9 +63,11 @@ class SearchFragment : Fragment() {
         )
 
         val spinnerAdapter = ArrayAdapter(requireContext(), R.layout.spinner_dropdown_item, provinces)
-
-        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item) // ใช้ layout ที่กำหนดเองสำหรับ dropdown
+        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.categoryFilter.adapter = spinnerAdapter
+
+        val itemHeight = resources.getDimensionPixelSize(R.dimen.dropdown_item_height)
+        binding.categoryFilter.dropDownVerticalOffset = itemHeight * 5
 
         binding.categoryFilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -80,6 +82,7 @@ class SearchFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
+
 
     private fun showAllMenu() {
         filterMenuCountry.clear()
